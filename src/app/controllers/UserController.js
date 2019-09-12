@@ -57,15 +57,13 @@ class UserController {
     const { email, oldPassword } = req.body;
     const user = await User.findByPk(req.userId);
 
-    if (email) {
-      if (email !== user.email) {
-        const userExists = await User.findOne({ where: { email } });
+    if (email !== user.email) {
+      const userExists = await User.findOne({ where: { email } });
 
-        if (userExists) {
-          return res.status(400).json({
-            error: 'User already exists',
-          });
-        }
+      if (userExists) {
+        return res.status(400).json({
+          error: 'User already exists',
+        });
       }
     }
 
@@ -75,14 +73,13 @@ class UserController {
       });
     }
 
-    const { name, id, provider, avatar_id } = await user.update(req.body);
+    const { name, id, provider } = await user.update(req.body);
 
     return res.json({
       id,
       name,
       email,
       provider,
-      avatar_id,
     });
   }
 }
