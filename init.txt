@@ -1,2 +1,0 @@
-Projeto envolvendo o uso de APIs, comunicando com Backend e Frontend para
-realizar agendamentos em um salao de belezas. Apenas um primeiro arquivo para push.
